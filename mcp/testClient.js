@@ -15,6 +15,16 @@ function hasFlag(flag) {
 	return process.argv.includes(flag);
 }
 
+function getMultiArg(flag) {
+	const values = [];
+	for (let i = 0; i < process.argv.length; i++) {
+		if (process.argv[i] === flag && i + 1 < process.argv.length) {
+			values.push(process.argv[i + 1]);
+		}
+	}
+	return values;
+}
+
 function buildRis(title) {
 	return [
 		"TY  - JOUR",
@@ -30,6 +40,12 @@ async function main() {
 	const target = getArgValue("--target") || process.env.ZOTERO_TARGET || "connector";
 	const title = getArgValue("--title") || process.env.TEST_ITEM_TITLE || "Connector Save Test";
 	const skipSave = hasFlag("--no-save");
+	const saveSnapshot = hasFlag("--snapshot");
+	const snapshotUrl = getArgValue("--snapshot-url");
+	const snapshotTitle = getArgValue("--snapshot-title");
+	const attachmentUrls = getMultiArg("--attachment-url");
+	const attachmentMimeType = getArgValue("--attachment-mime");
+	const noteParentIndex = getArgValue("--note-parent-index");
 
 	const transport = new StdioClientTransport({
 		command: "node",
@@ -57,7 +73,16 @@ async function main() {
 
 	const saveRes = await client.callTool({
 		name: "save_to_zotero",
-		arguments: { target, items }
+		arguments: {
+			target,
+			items,
+			saveSnapshot,
+			snapshotUrl,
+			snapshotTitle,
+			attachmentUrls: attachmentUrls.length ? attachmentUrls : undefined,
+			attachmentMimeType,
+			noteParentIndex: noteParentIndex !== null ? Number(noteParentIndex) : undefined
+		}
 	});
 	console.log(saveRes.content[0].text);
 

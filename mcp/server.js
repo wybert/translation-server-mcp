@@ -103,7 +103,18 @@ const tools = [
 				cookie: { type: "string", description: "Cookie header value for connector save (optional)" },
 				detailedCookies: { type: "string", description: "Detailed cookies for connector save (optional)" },
 				proxy: { type: "string", description: "Proxy identifier for connector save (optional)" },
-				clientVersion: { type: "string", description: "Connector client version header override" }
+				clientVersion: { type: "string", description: "Connector client version header override" },
+				saveAttachments: { type: "boolean", description: "Attempt to save PDF/EPUB attachments via connector" },
+				useAttachmentResolvers: { type: "boolean", description: "Attempt OA resolver attachments when available" },
+				saveSnapshot: { type: "boolean", description: "Save a basic HTML snapshot using connector" },
+				snapshotUrl: { type: "string", description: "Snapshot URL override (defaults to item.url)" },
+				snapshotTitle: { type: "string", description: "Snapshot title override" },
+				userAgent: { type: "string", description: "User-Agent for attachment/snapshot fetches" },
+				attachmentUrls: { type: "array", items: { type: "string" }, description: "Explicit attachment URLs to fetch (applied to first item)" },
+				attachmentTitles: { type: "array", items: { type: "string" }, description: "Optional titles for attachmentUrls" },
+				attachmentMimeType: { type: "string", description: "MIME type for attachmentUrls (default application/pdf)" },
+				attachmentItemIndex: { type: "integer", description: "Item index to attach attachmentUrls to (default 0)" },
+				noteParentIndex: { type: "integer", description: "Attach loose note items to this item index" }
 			},
 			required: ["items"],
 			additionalProperties: false
@@ -132,7 +143,18 @@ async function handleSaveToZotero(args) {
 		cookie: args.cookie,
 		detailedCookies: args.detailedCookies,
 		proxy: args.proxy,
-		clientVersion: args.clientVersion
+		clientVersion: args.clientVersion,
+		saveAttachments: args.saveAttachments,
+		useAttachmentResolvers: args.useAttachmentResolvers,
+		saveSnapshot: args.saveSnapshot,
+		snapshotUrl: args.snapshotUrl,
+		snapshotTitle: args.snapshotTitle,
+		userAgent: args.userAgent,
+		attachmentUrls: args.attachmentUrls,
+		attachmentTitles: args.attachmentTitles,
+		attachmentMimeType: args.attachmentMimeType,
+		attachmentItemIndex: args.attachmentItemIndex,
+		noteParentIndex: args.noteParentIndex
 	};
 	if (target === "connector") {
 		return zoteroConnector.save(args.items, options);
