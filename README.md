@@ -126,11 +126,7 @@ One-command (npx) option that auto-starts translation-server if needed:
   "mcpServers": {
     "translation-server-mcp": {
       "command": "npx",
-      "args": ["-y", "github:wybert/translation-server-mcp"],
-      "env": {
-        "TRANSLATION_SERVER_URL": "http://127.0.0.1:1969",
-        "ZOTERO_CONNECTOR_URL": "http://127.0.0.1:23119"
-      }
+      "args": ["-y", "github:wybert/translation-server-mcp"]
     }
   }
 }
@@ -138,6 +134,7 @@ One-command (npx) option that auto-starts translation-server if needed:
 
 Notes:
 - Zotero Desktop connector is the default target; keep Zotero open.
+- The npx config uses defaults for `TRANSLATION_SERVER_URL` and `ZOTERO_CONNECTOR_URL`. Override via `env` if needed.
 - For Zotero Web, set `ZOTERO_WEB_API_KEY`, `ZOTERO_WEB_LIBRARY_TYPE`, and `ZOTERO_WEB_LIBRARY_ID`.
 - Optional test: `npm run mcp:test`
 
