@@ -94,6 +94,37 @@ It’s also possible to opt out of proxying for specific hosts by using the `NO_
 
 `npm test`
 
+## MCP Server (AI Clients)
+
+This repo includes a stdio-based MCP server for AI clients. Keep the translation server running and configure your MCP client to launch `mcp/server.js`.
+
+Start translation-server:
+```
+npm start
+```
+
+Example MCP client config:
+```json
+{
+  "mcpServers": {
+    "translation-server-mcp": {
+      "command": "node",
+      "args": ["mcp/server.js"],
+      "cwd": "/Users/kang/GitHub/translation-server-mcp",
+      "env": {
+        "TRANSLATION_SERVER_URL": "http://127.0.0.1:1969",
+        "ZOTERO_CONNECTOR_URL": "http://127.0.0.1:23119"
+      }
+    }
+  }
+}
+```
+
+Notes:
+- Zotero Desktop connector is the default target; keep Zotero open.
+- For Zotero Web, set `ZOTERO_WEB_API_KEY`, `ZOTERO_WEB_LIBRARY_TYPE`, and `ZOTERO_WEB_LIBRARY_ID`.
+- Optional test: `npm run mcp:test`
+
 ## Endpoints
 
 ### Web Translation
