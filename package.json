@@ -4,6 +4,10 @@
 	"description": "Zotero translation server",
 	"license": "AGPL-3.0-only",
 	"main": "index.js",
+	"bin": {
+		"translation-server": "mcp/cli.js",
+		"translation-server-mcp": "mcp/cli.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/zotero/translation-server-v2"

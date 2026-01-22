@@ -120,6 +120,22 @@ Example MCP client config:
 }
 ```
 
+One-command (npx) option that auto-starts translation-server if needed:
+```json
+{
+  "mcpServers": {
+    "translation-server-mcp": {
+      "command": "npx",
+      "args": ["-y", "github:wybert/translation-server-mcp"],
+      "env": {
+        "TRANSLATION_SERVER_URL": "http://127.0.0.1:1969",
+        "ZOTERO_CONNECTOR_URL": "http://127.0.0.1:23119"
+      }
+    }
+  }
+}
+```
+
 Notes:
 - Zotero Desktop connector is the default target; keep Zotero open.
 - For Zotero Web, set `ZOTERO_WEB_API_KEY`, `ZOTERO_WEB_LIBRARY_TYPE`, and `ZOTERO_WEB_LIBRARY_ID`.
