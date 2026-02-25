@@ -1,0 +1,37 @@
+[
+  {
+    "path": "modules/translate",
+    "url": "https://github.com/zotero/translate.git",
+    "commit": "e0fe482b8a07e42cbf83545947382008ae7ddb82"
+  },
+  {
+    "path": "modules/translate/modules/utilities",
+    "url": "https://github.com/zotero/utilities.git",
+    "commit": "cccf1235a318c259345fc623d5e9d6770ba19df7"
+  },
+  {
+    "path": "modules/translate/modules/utilities/resource/schema/global",
+    "url": "https://github.com/zotero/zotero-schema.git",
+    "commit": "1b12272d44134a652519e9192e5a936ac9fcd707"
+  },
+  {
+    "path": "modules/translators",
+    "url": "https://github.com/zotero/translators",
+    "commit": "ee1746de4d401edc036477d5223551bafd5149a8"
+  },
+  {
+    "path": "modules/utilities",
+    "url": "https://github.com/zotero/utilities.git",
+    "commit": "9c89b23153ce621ed0f1d581a5e32248704c6fb7"
+  },
+  {
+    "path": "modules/utilities/resource/schema/global",
+    "url": "https://github.com/zotero/zotero-schema.git",
+    "commit": "1b12272d44134a652519e9192e5a936ac9fcd707"
+  },
+  {
+    "path": "modules/zotero-schema",
+    "url": "https://github.com/zotero/zotero-schema.git",
+    "commit": "1f5331e902ed2b765a379b9586c65d1a192c151d"
+  }
+]

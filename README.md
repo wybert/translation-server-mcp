@@ -135,6 +135,7 @@ One-command (npx) option that auto-starts translation-server if needed:
 Notes:
 - Zotero Desktop connector is the default target; keep Zotero open.
 - The npx config uses defaults for `TRANSLATION_SERVER_URL` and `ZOTERO_CONNECTOR_URL`. Override via `env` if needed.
+- The npx entrypoint auto-fetches git submodules on first run (requires `tar` in PATH). Set `MCP_SKIP_SUBMODULES=1` to skip if already present.
 - For Zotero Web, set `ZOTERO_WEB_API_KEY`, `ZOTERO_WEB_LIBRARY_TYPE`, and `ZOTERO_WEB_LIBRARY_ID`.
 - Optional test: `npm run mcp:test`
 
